@@ -22,9 +22,9 @@ function forwardCarousel(){
     if (countForward < 10)
         countForward++;
 }
-if (nextButton.clicked == true)
-    nextButton.addEventListener('click',forwardCarousel);   
-else{
+
+nextButton.addEventListener('click',forwardCarousel);   
+if (nextButton.clicked == false){
     nextButton.addEventListener('touchstart',forwardCarousel);
     nextButton.addEventListener('touchmove',forwardCarousel); 
 }   
@@ -40,9 +40,9 @@ function backwardCarousel(){
     if (countBackward>=0)
         countBackward--;
 }
-if (nextButton.clicked == true)
-    preButton.addEventListener('click',backwardCarousel);
-else {
+
+preButton.addEventListener('click',backwardCarousel);
+if (preButton.clicked == false) {
     preButton.addEventListener('touchstart',backwardCarousel);
     preButton.addEventListener('touchmove',backwardCarousel); 
 }
@@ -147,9 +147,9 @@ function configMenuBtn(){
     deleteBtn.style.display = "block";
 }
 
-if (menuIcon.clicked == true)
-    menuIcon.addEventListener("click",configMenuBtn);
-else menuIcon.addEventListener('touchstart',configMenuBtn);
+menuIcon.addEventListener("click",configMenuBtn);
+if (menuIcon.clicked == false) 
+    menuIcon.addEventListener('touchstart',configMenuBtn);
 
 function configDeleteBtn(){
     menuIcon.style.display = "block";
@@ -157,9 +157,9 @@ function configDeleteBtn(){
     deleteBtn.style.display = "none";
 }
 
-if (deleteBtn.clicked == true)
-    deleteBtn.addEventListener("click",configDeleteBtn);
-else deleteBtn.addEventListener('touchstart',configDeleteBtn);
+deleteBtn.addEventListener("click",configDeleteBtn);
+if (deleteBtn.clicked == false) 
+    deleteBtn.addEventListener('touchstart',configDeleteBtn);
 
 
 function resizeDimensionResponsive(){
