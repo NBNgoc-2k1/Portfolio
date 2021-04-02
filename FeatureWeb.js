@@ -22,10 +22,12 @@ function forwardCarousel(){
     if (countForward < 10)
         countForward++;
 }
-
-nextButton.addEventListener('click',forwardCarousel);
-nextButton.addEventListener('touchstart',forwardCarousel);
-nextButton.addEventListener('touchmove',forwardCarousel); 
+if (nextButton.clicked == true)
+    nextButton.addEventListener('click',forwardCarousel);   
+else{
+    nextButton.addEventListener('touchstart',forwardCarousel);
+    nextButton.addEventListener('touchmove',forwardCarousel); 
+}   
 
 // Previous button so that current item moves to previous item
 function backwardCarousel(){
@@ -38,10 +40,12 @@ function backwardCarousel(){
     if (countBackward>=0)
         countBackward--;
 }
-
-preButton.addEventListener('click',backwardCarousel);
-preButton.addEventListener('touchstart',backwardCarousel);
-preButton.addEventListener('touchmove',backwardCarousel); 
+if (nextButton.clicked == true)
+    preButton.addEventListener('click',backwardCarousel);
+else {
+    preButton.addEventListener('touchstart',backwardCarousel);
+    preButton.addEventListener('touchmove',backwardCarousel); 
+}
 
 carousel.addEventListener('transitionend',()=>{
     if (countForward == 10){
@@ -61,7 +65,6 @@ carousel.addEventListener('transitionend',()=>{
     }
 })
 
-// variable for header
 let header = document.getElementById('header');
 
 // When users scroll the scrollbar, webpage will create a line to distinguish nav bar from the rest
@@ -144,8 +147,9 @@ function configMenuBtn(){
     deleteBtn.style.display = "block";
 }
 
-menuIcon.addEventListener("click",configMenuBtn);
-menuIcon.addEventListener('touchstart',configMenuBtn);
+if (menuIcon.clicked == true)
+    menuIcon.addEventListener("click",configMenuBtn);
+else menuIcon.addEventListener('touchstart',configMenuBtn);
 
 function configDeleteBtn(){
     menuIcon.style.display = "block";
@@ -153,8 +157,9 @@ function configDeleteBtn(){
     deleteBtn.style.display = "none";
 }
 
-deleteBtn.addEventListener("click",configDeleteBtn);
-deleteBtn.addEventListener('touchstart',configDeleteBtn);
+if (deleteBtn.clicked == true)
+    deleteBtn.addEventListener("click",configDeleteBtn);
+else deleteBtn.addEventListener('touchstart',configDeleteBtn);
 
 
 function resizeDimensionResponsive(){
@@ -206,6 +211,8 @@ function resizeDimensionResponsive(){
         menuIcon.style.display = "block";
         listNav.style.display = "none"; 
     }
+    countForward=4;
+    countBackward=2;
 }
 
 window.addEventListener('resize',resizeDimensionResponsive);

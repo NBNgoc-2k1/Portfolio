@@ -287,6 +287,10 @@ p{
     background: 0 0;
 }
 
+header > .container{
+    max-width:100%;
+}
+
 .header-fixed{
     position: absolute;
     top:0;
@@ -743,9 +747,6 @@ h2.pre{
 }    
 
 @media(max-width: 991.5px){
-    header > .container{
-        max-width:100%;
-    }
 
     .container{
         max-width:720px;
