@@ -12,8 +12,11 @@ let widthItem = mySlides.item(0).clientWidth;
 // Next button so that current item moves to next item
 
 function forwardCarousel(){
-    let locationCarousel = -widthItem*countForward;
-    
+    let locationCarousel;
+    if (window.innerWidth >= 576)    
+        locationCarousel = -widthItem*countForward;
+    else 
+        locationCarousel = -(widthItem*countForward + 9);
     countBackward = countForward-1;
     if (countBackward < 0)
         countBackward = 6
@@ -31,7 +34,11 @@ if (nextButton.clicked == false){
 
 // Previous button so that current item moves to previous item
 function backwardCarousel(){
-    let locationCarousel = -widthItem*countBackward;
+    let locationCarousel;
+    if (window.innerWidth >= 576)
+        locationCarousel = -widthItem*countBackward;
+    else 
+        locationCarousel = -(widthItem*countBackward + 9);
     carousel.style.transition = 'transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1) 0s';
     carousel.style.transform = 'translate3d(' + locationCarousel +'px,0px,0px)';
     countForward = countBackward+1;
@@ -201,15 +208,20 @@ function resizeDimensionResponsive(){
     }
     else if (newWidthWindow < 576) {
         let tempWidthItem = newWidthWindow - 56;
+        let rightPosition;
+        parseInt(preButton.style.right,rightPosition);
+        console.log(rightPosition);
         for (let i = 0; i < mySlides.length; i++)
             mySlides.item(i).style.width = (tempWidthItem + "px");
         newWidthItem = mySlides.item(0).clientWidth;
         widthItem = newWidthItem;
-        tempLocationCarousel = newWidthItem * 3;
+        tempLocationCarousel = newWidthItem * 3 + 9;
+        console.log(tempLocationCarousel);
         carousel.style.transition = 'none';
         carousel.style.transform = 'translate3d(-' + tempLocationCarousel + 'px,0,0)';
         menuIcon.style.display = "block";
-        listNav.style.display = "none"; 
+        listNav.style.display = "none";
+
     }
     countForward=4;
     countBackward=2;

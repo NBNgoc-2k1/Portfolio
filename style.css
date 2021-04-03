@@ -50,6 +50,7 @@ body{
     font-weight: 400;
     line-height:1.5;
     text-align: left;
+    overflow-x: hidden;
 }
 
 hr{
@@ -285,6 +286,7 @@ p{
     z-index: 10;
     transition: .25s padding-top ease-in-out,.25s padding-bottom ease-in-out;
     background: 0 0;
+    width: 100%;
 }
 
 header > .container{
@@ -294,7 +296,7 @@ header > .container{
 .header-fixed{
     position: absolute;
     top:0;
-    width: 100%;
+
 }
 
 .header-scrolling{
@@ -707,7 +709,7 @@ h2.pre{
     width: 3.75rem;
     height: 3.75rem;
     background-size: cover;
-    background-position: center center;
+    background-position:    center;
     z-index: 20;
     cursor: pointer;
 }
@@ -830,11 +832,11 @@ h2.pre{
     }
 
     #nextBtn{
-        left:105%;
+        left:100%;
     }
     
     #preBtn{
-        right:89.5%;
+        right:86.5%;
     }
 }
 
