@@ -311,6 +311,7 @@ header > .container{
     margin-right: .625rem;
     font-weight: 600;
     padding-top: .9375rem;
+    justify-content: center;
 }
 
 .header_logo a{
@@ -339,7 +340,7 @@ header > .container{
 
 .listnav{
     display: flex;
-    justify-content: right;
+    justify-content: center;
     margin: 0;
 }
 
@@ -382,7 +383,7 @@ header > .container{
 .introduce{  
     position: relative;
     background-attachment: fixed;
-    background: linear-gradient(to bottom,rgb(94, 204, 248),rgb(78, 171, 207),rgb(133, 213, 245));
+    background:linear-gradient(to bottom,rgb(94, 204, 248),rgb(78, 171, 207),rgb(133, 213, 245));
     color: #ffff;
 }
 
