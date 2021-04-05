@@ -50,7 +50,6 @@ body{
     font-weight: 400;
     line-height:1.5;
     text-align: left;
-    overflow-x: hidden;
 }
 
 hr{
@@ -268,17 +267,10 @@ p{
 }
 
 .container{
-    width: 100%;
     padding-right: 1.75rem;
     padding-left: 1.75rem;
     margin-right: auto;
     margin-left: auto;
-}
-
-.row{
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -1.75rem;
 }
 
 .header{
@@ -289,18 +281,13 @@ p{
     width: 100%;
 }
 
-header > .container{
-    max-width:100%;
-}
-
 .header-fixed{
-    position: absolute;
+    position: fixed;
     top:0;
-
 }
 
 .header-scrolling{
-    position:fixed;
+    position:sticky;
     border-bottom: 1px solid rgb(95, 86, 86);
     background-color: rgb(94, 204, 248);
 }
@@ -428,12 +415,10 @@ header > .container{
 .row{
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -1.75rem;
 }
 
 .carousel{
     position: relative;
-    width: 100%;
     box-sizing: border-box;
     margin-left: -1.75rem;
 }
@@ -453,9 +438,7 @@ header > .container{
 #slide_show{
     display:  flex;
     flex-flow: row nowrap;
-    width: 4430px;
-    transition: transform 0ms cubic-bezier(0.165, 0.84, 0.44, 1) 0s ;
-    transform: translate3d(-1080px,0,0);
+    overflow-x:clip;
 }
 
 .item{
@@ -484,9 +467,9 @@ header > .container{
 #preBtn, #nextBtn{
     display:block;
     background-color: transparent;
-    border: none; 
+    border: none;
     position: absolute;
-    top:5%;
+    top: 5%;
     width: 40px;
     height:40px;
     padding: 5rem;
@@ -502,11 +485,12 @@ header > .container{
 
 #preBtn{
     right:97.5%;
+    padding-right: 1.25rem;
 }
 
 #nextBtn {
-    left:100%;
-    right:0;
+    left:96.5%;
+    padding-left: 1.25rem;
 }
 
 #service{
@@ -524,7 +508,7 @@ header > .container{
     border-radius: 1.5625rem;
     color:  rgb(8, 175, 241);
     cursor:pointer;
-    margin-left:61px;
+    margin-left:32px;
 }
 
 #toprice:hover{
@@ -667,10 +651,6 @@ h2.pre{
     color: #495057;
 }
 
-#selservice{
-    width: 50%;
-}
-
 .btn-primary{
     color: #fff;
     background-color:  rgb(8, 175, 241);
@@ -689,7 +669,7 @@ h2.pre{
 
 .itemcontactlink{
     text-decoration: none;
-    color: #2b2a2a6c;
+    color: #0000006c;
     font-weight: bold;
     border: 1px solid transparent;
     border-bottom: 2px;
@@ -710,7 +690,7 @@ h2.pre{
     width: 3.75rem;
     height: 3.75rem;
     background-size: cover;
-    background-position:    center;
+    background-position:center;
     z-index: 20;
     cursor: pointer;
 }
@@ -726,10 +706,6 @@ h2.pre{
     #preBtn,#nextBtn{
         padding: 0 8px;
         top:5%;
-    }
-
-    #nextBtn{
-        left:102%;
     }
  
 }
@@ -754,10 +730,6 @@ h2.pre{
     .container{
         max-width:720px;
     }
-    
-    .header > container{
-        max-width:100%;
-    }
 
     .menu-icon{
         display: inline-block;
@@ -765,7 +737,6 @@ h2.pre{
 
     .listnav{
         display:none;
-        width: 100%;
         position: fixed;
         flex-direction: column;
         background-color: rgb(94, 204, 248);
@@ -816,10 +787,6 @@ h2.pre{
     .item{
         width:484px;
     }
-
-    #nextBtn{
-        left:108%;
-    }
 }
 
 @media(max-width:575.5px){
@@ -830,10 +797,6 @@ h2.pre{
 
     .item{
         width:519px;
-    }
-
-    #nextBtn{
-        left:100%;
     }
     
     #preBtn{

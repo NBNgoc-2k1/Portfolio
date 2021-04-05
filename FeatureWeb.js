@@ -216,7 +216,7 @@ function resizeDimensionResponsive(){
         newWidthItem = mySlides.item(0).clientWidth;
         widthItem = newWidthItem;
         tempLocationCarousel = newWidthItem * 3 + 9;
-        console.log(tempLocationCarousel);
+
         carousel.style.transition = 'none';
         carousel.style.transform = 'translate3d(-' + tempLocationCarousel + 'px,0,0)';
         menuIcon.style.display = "block";
