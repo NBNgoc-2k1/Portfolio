@@ -5,6 +5,12 @@
     scroll-behavior: smooth;
 }
 
+html,body {
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+}
+
 ::selection{
     color:#fff;
 }
@@ -14,7 +20,7 @@
 }
 
 article,aside,figcaption,figure,footer,header,hgroup,main,nav,section{
-    display: block;
+    display: block; 
 }
 
 button,input{
@@ -775,9 +781,9 @@ h2.pre{
     .col-md-8,.col-md-7,.col-md-6{
         max-width:100%;
         flex: 0 0 100%;
-        padding-right: 1.75rem;
-        padding-left: 1.75rem;
     }
+
+    
 
     #slide_show{
         width:5918px;

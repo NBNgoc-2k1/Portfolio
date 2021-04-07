@@ -16,7 +16,7 @@ function forwardCarousel(){
     if (window.innerWidth >= 576)    
         locationCarousel = -widthItem*countForward;
     else 
-        locationCarousel = -(widthItem*countForward + 9);
+        locationCarousel = -(widthItem*countForward -3);
     countBackward = countForward-1;
     if (countBackward < 0)
         countBackward = 6
@@ -38,7 +38,7 @@ function backwardCarousel(){
     if (window.innerWidth >= 576)
         locationCarousel = -widthItem*countBackward;
     else 
-        locationCarousel = -(widthItem*countBackward + 9);
+        locationCarousel = -(widthItem*countBackward -3);
     carousel.style.transition = 'transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1) 0s';
     carousel.style.transform = 'translate3d(' + locationCarousel +'px,0px,0px)';
     countForward = countBackward+1;
@@ -192,13 +192,19 @@ function resizeDimensionResponsive(){
             for (let i = 0; i < mySlides.length; i++)
                 mySlides.item(i).style.width = '327px';
             menuIcon.style.display = "block";
-            listNav.style.display = "none";        
+            listNav.style.display = "none"; 
+            let emailTextArea = document.getElementsByClassName('pddright-8').item(1);
+            emailTextArea.classList.remove("pddright-8");
+            emailTextArea.classList.add("pddleft-8");       
         }
         else if (newWidthWindow >= 576 && newWidthWindow < 768) {
             for (let i = 0; i < mySlides.length; i++)
                 mySlides.item(i).style.width = '484px';
             menuIcon.style.display = "block";
             listNav.style.display = "none"; 
+            let emailTextArea = document.getElementsByClassName('pddleft-8').item(0);
+            emailTextArea.classList.remove("pddleft-8");
+            emailTextArea.classList.add("pddright-8");
         }
         newWidthItem = mySlides.item(0).clientWidth;
         widthItem = newWidthItem;
@@ -215,13 +221,20 @@ function resizeDimensionResponsive(){
             mySlides.item(i).style.width = (tempWidthItem + "px");
         newWidthItem = mySlides.item(0).clientWidth;
         widthItem = newWidthItem;
-        tempLocationCarousel = newWidthItem * 3 + 9;
+        tempLocationCarousel = newWidthItem * 3 - 3;
 
         carousel.style.transition = 'none';
         carousel.style.transform = 'translate3d(-' + tempLocationCarousel + 'px,0,0)';
         menuIcon.style.display = "block";
         listNav.style.display = "none";
-
+        let emailTextArea = document.getElementsByClassName('pddleft-8').item(0);
+        emailTextArea.classList.remove("pddleft-8");
+        emailTextArea.classList.add("pddright-8");
+        let detailService = document.getElementsByClassName('hastooltiptext');
+        detailService.item(0).style.left = "-15%";
+        detailService.item(1).style.left = "-15%";
+        detailService.item(2).style.left = "-60%";
+        detailService.item(3).style.left = "-100%";
     }
     countForward=4;
     countBackward=2;
@@ -229,5 +242,3 @@ function resizeDimensionResponsive(){
 
 window.addEventListener('resize',resizeDimensionResponsive);
 window.addEventListener('load',resizeDimensionResponsive);
-
-
