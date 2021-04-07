@@ -214,9 +214,6 @@ function resizeDimensionResponsive(){
     }
     else if (newWidthWindow < 576) {
         let tempWidthItem = newWidthWindow - 56;
-        let rightPosition;
-        parseInt(preButton.style.right,rightPosition);
-        console.log(rightPosition);
         for (let i = 0; i < mySlides.length; i++)
             mySlides.item(i).style.width = (tempWidthItem + "px");
         newWidthItem = mySlides.item(0).clientWidth;
@@ -231,6 +228,7 @@ function resizeDimensionResponsive(){
         emailTextArea.classList.remove("pddleft-8");
         emailTextArea.classList.add("pddright-8");
         let detailService = document.getElementsByClassName('hastooltiptext');
+        console.log(detailService);
         detailService.item(0).style.left = "-15%";
         detailService.item(1).style.left = "-15%";
         detailService.item(2).style.left = "-60%";
