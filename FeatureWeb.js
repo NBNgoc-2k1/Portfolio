@@ -192,17 +192,19 @@ function resizeDimensionResponsive(){
             for (let i = 0; i < mySlides.length; i++)
                 mySlides.item(i).style.width = '327px';
             menuIcon.style.display = "block";
-            listNav.style.display = "none"; 
-            let emailTextArea = document.getElementsByClassName('pddright-8').item(1);
+            listNav.style.display = "none";    
+            let emailTextArea = document.getElementById("email");
             emailTextArea.classList.remove("pddright-8");
-            emailTextArea.classList.add("pddleft-8");       
+            emailTextArea.classList.add("pddleft-8");   
+            let planServiceArea = document.getElementById("planservice");
+            planServiceArea.classList.replace("col-md-6","col-md-7");
         }
         else if (newWidthWindow >= 576 && newWidthWindow < 768) {
             for (let i = 0; i < mySlides.length; i++)
                 mySlides.item(i).style.width = '484px';
             menuIcon.style.display = "block";
             listNav.style.display = "none"; 
-            let emailTextArea = document.getElementsByClassName('pddleft-8').item(0);
+            let emailTextArea = document.getElementById("email");
             emailTextArea.classList.remove("pddleft-8");
             emailTextArea.classList.add("pddright-8");
         }
