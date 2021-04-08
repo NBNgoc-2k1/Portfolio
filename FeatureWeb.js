@@ -187,6 +187,8 @@ function resizeDimensionResponsive(){
             menuIcon.style.display = "none";
             listNav.style.display = "flex";
             deleteBtn.style.display = "none";
+            let planServiceArea = document.getElementById("planservice");
+            planServiceArea.classList.replace("col-md-7","col-md-6");
         }
         else if (newWidthWindow >= 768 && newWidthWindow < 992) {
             for (let i = 0; i < mySlides.length; i++)
