@@ -570,8 +570,8 @@ h2.pre{
 
 #basic{
     background-color: #fff;
-    color: #2b2a2a6c;
-    border: 1px solid #2b2a2a6c;
+    color: black;
+    border: 1px solid black;
 }
 
 #basic:hover{
@@ -669,7 +669,7 @@ h2.pre{
 
 .itemcontactlink{
     text-decoration: none;
-    color: #2b2a2a6c;
+    color: black;
     font-weight: bold;
     border: 1px solid transparent;
     border-bottom: 2px;
