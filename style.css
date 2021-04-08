@@ -543,14 +543,17 @@ h2.pre{
 
 #basicprice{
     background-color: rgba(209, 204, 204, 0.534);
+    border-radius: 1.25rem;
 }
 
 #standardprice{
     background-color: rgb(94, 204, 248);
+    border-radius: 1.25rem;
 }
 
 #premiumprice{
     background-color: rgb(236, 136, 14);
+    border-radius: 1.25rem;
 }
 
 .listitemprice{
