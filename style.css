@@ -570,7 +570,7 @@ h2.pre{
 
 #basic{
     background-color: #fff;
-    color: black;
+    color: #2b2a2a6c;
     border: 1px solid #2b2a2a6c;
 }
 
@@ -669,7 +669,7 @@ h2.pre{
 
 .itemcontactlink{
     text-decoration: none;
-    color: black;
+    color: #2b2a2a6c;
     font-weight: bold;
     border: 1px solid transparent;
     border-bottom: 2px;
