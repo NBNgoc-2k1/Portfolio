@@ -439,6 +439,7 @@ p{
     display:  flex;
     flex-flow: row nowrap;
     overflow-x:clip;
+    width: 4320px;
 }
 
 .item{
