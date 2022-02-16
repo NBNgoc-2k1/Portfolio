@@ -349,18 +349,32 @@ p{
     color:rgb(224, 14, 14);
 }
 
-.menu-icon{
-    position: absolute;
-    top: -.5rem;
-    right:10%;
-    width:1.875rem;
-    cursor:pointer;
-    display:none;
-    margin-bottom: .125rem;
+.menu-icon,.close-icon{
+    margin-left: 80%;
+    display: none;
 }
 
-#delete-icon{
+.line1{
+    transition: transform 0.3s linear 0s;
+    transform: rotate(45deg);
+    position: absolute;
+}
+
+.line2{
     display: none;
+}
+
+.line3{
+    transition: transform 0.3s linear 0s;
+    transform: rotate(-45deg);
+    position: absolute;
+}
+
+.menu-icon div,.close-icon div{
+    width:1.5625rem;
+    height: 0.3125rem;
+    background-color: #fff;
+    margin: .3125rem;
 }
 
 .active{
@@ -488,7 +502,7 @@ p{
 }
 
 #nextBtn {
-    left:96.5%;
+    left:99.5%;
     padding-left: 1.25rem;
 }
 
@@ -733,8 +747,9 @@ h2.pre{
         max-width:720px;
     }
 
-    .menu-icon{
-        display: inline-block;
+    .menu-icon,.close-icon{
+        display: block;
+        cursor: pointer;
     }
 
     .listnav{
@@ -748,11 +763,17 @@ h2.pre{
         top:50px;
         padding: 30px;
         text-align: center;
+        border-top: 1px solid rgb(95, 86, 86);
     }
 
     .col-md-8{
         flex: 0 0 66.667%;
         max-width: 66.667%;
+    }
+
+    .col-md-6{
+        max-width:100%;
+        flex: 0 0 100%;
     }
 
     .pricing-plan{
@@ -803,6 +824,10 @@ h2.pre{
     
     #preBtn{
         right:86.5%;
+    }
+
+    #nextBtn{
+        left: 96.5%;
     }
 }
 
