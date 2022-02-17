@@ -438,6 +438,8 @@ p{
 }
 
 .flex-container{
+    display:  flex;
+    flex-flow: row nowrap;
     max-width: 125rem;
     max-height: 62.5rem;
     box-sizing: border-box;
