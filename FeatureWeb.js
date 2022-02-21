@@ -138,74 +138,79 @@ requestServiceButton.item(2).addEventListener('click', () => {
 })
 
 /* Click menu icon so that navigation appear and click delete button to hidden navigation */
-// var menuIcon = document.getElementsByClassName("menu-icon");
-// var closeIcon = document.getElementsByClassName("close-icon");
-// var listNav = document.getElementById("navigation");
-// var lineMenuIcon = document.getElementsByClassName("line");
+let menuIcon = document.getElementsByClassName('menu-icon').item(0);
+let closeIcon = document.getElementsByClassName("close-icon").item(0);
+let lineMenuIcon = document.getElementsByClassName("line");
+let listNav = document.getElementById('navigation');
 
-// function menuEffect() {
-//     if (menuIcon != null) {
-//         menuIcon.item(0).classList.toggle("close-icon");
-//         menuIcon.item(0).classList.toggle("menu-icon");
-//         listNav.style.display = "flex";
-//         menuIcon = null;
-//         closeIcon = document.getElementsByClassName("close-icon");
-//     } else {
-//         if (closeIcon != null) {
-//             closeIcon.item(0).classList.toggle("menu-icon");
-//             closeIcon.item(0).classList.toggle("close-icon");
-//             listNav.style.display = "none";
-//             closeIcon = null;
-//             menuIcon = document.getElementsByClassName("menu-icon");
-//         }
-//     }
+function menuIconEffect() {
+    if (menuIcon != null) {
+        closeIcon = null;
+        menuIcon.classList.toggle("menu-icon");
+        listNav.style.display = "flex";
+        closeIcon = document.getElementsByClassName("close-icon").item(0);
+        menuIcon = null;
+    } else {
+        if (closeIcon != null) {
+            closeIcon.classList.toggle("menu-icon");
+            listNav.style.display = "none";
+            menuIcon = document.getElementsByClassName('menu-icon').item(0);
+        }
+    }
+    for (let index = 0; index < lineMenuIcon.length; index++) {
+        lineMenuIcon.item(index).classList.toggle(`line${index+1}`);
+    }
+}
 
-//     for (let index = 0; index < lineMenuIcon.length; index++) {
-//         lineMenuIcon.item(index).classList.toggle(`line${index+1}`);
-//     }
-// }
+menuIcon.addEventListener("click", menuIconEffect);
+closeIcon.addEventListener("click", menuIconEffect);
 
-// menuIcon.item(0).addEventListener('click', menuEffect);
-// closeIcon.item(0).addEventListener('click', menuEffect);
+// Config layout when the window size change
 function resizeDimensionResponsive() {
     let newWidthWindow = window.innerWidth;
     let tempLocationCarousel;
     let newWidthItem;
     let planServiceArea = document.getElementById("planservice");
-    let emailTextArea = document.getElementById("email");
+    let nameArea = document.getElementById("name");
+    let detailArea = document.getElementById("detail");
+    let emailArea = document.getElementById("email");
     if (newWidthWindow >= 576) {
         if (newWidthWindow >= 992) {
+            listNav.style.display = "flex";
             if (newWidthWindow >= 1200) {
                 for (let i = 0; i < mySlides.length; i++)
                     mySlides.item(i).style.width = '360px';
-            } 
-            else {
+            } else {
                 for (let i = 0; i < mySlides.length; i++)
                     mySlides.item(i).style.width = '300px';
-                planServiceArea.classList.replace("col-md-7", "col-md-6");       
             }
+            nameArea.classList.replace("col-md-12", "col-md-6");
+            planServiceArea.classList.replace("col-md-12", "col-md-6");
+            emailArea.classList.replace("col-md-12", "col-md-6");
+            emailArea.classList.replace("pddright-8", "pddleft-8");
+            detailArea.classList.remove("pddright-8");
         } else {
-            listNav.style.display = 'none';
+            listNav.style.display = "none";
             if (newWidthWindow >= 768) {
                 for (let i = 0; i < mySlides.length; i++)
-                    mySlides.item(i).style.width = '327px';
+                    mySlides.item(i).style.width = '340px';
                 let detailTextArea = document.getElementsByClassName('col-md-12').item(2);
-                emailTextArea.classList.replace("pddleft-8,pddright-8");
-                detailTextArea.classList.replace("pddleft-8,pddright-8");
-                planServiceArea.classList.replace("col-md-6", "col-md-7");
-            } 
-            else{
+            } else {
                 for (let i = 0; i < mySlides.length; i++)
                     mySlides.item(i).style.width = '484px';
             }
+            nameArea.classList.replace("col-md-6", "col-md-12");
+            planServiceArea.classList.replace("col-md-6", "col-md-12");
+            emailArea.classList.replace("col-md-6", "col-md-12");
+            emailArea.classList.replace("pddleft-8", "pddright-8");
+            detailArea.classList.add("pddright-8");
         }
         newWidthItem = mySlides.item(0).clientWidth;
         widthItem = newWidthItem;
         tempLocationCarousel = newWidthItem * 3;
         carousel.style.transition = 'none';
         carousel.style.transform = 'translate3d(-' + tempLocationCarousel + 'px,0,0)';
-    } 
-    else{
+    } else {
         let tempWidthItem = newWidthWindow - 56;
         for (let i = 0; i < mySlides.length; i++)
             mySlides.item(i).style.width = (tempWidthItem + "px");
@@ -222,8 +227,8 @@ function resizeDimensionResponsive() {
         detailService.item(2).style.left = "-60%";
         detailService.item(3).style.left = "-100%";
     }
-    countForward=4;
-    countBackward=2;
+    countForward = 4;
+    countBackward = 2;
 }
 
 window.addEventListener('resize', resizeDimensionResponsive);

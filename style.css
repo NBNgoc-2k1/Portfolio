@@ -361,7 +361,7 @@ p{
 }
 
 .line2{
-    display: none;
+    display:none;
 }
 
 .line3{
@@ -438,8 +438,6 @@ p{
 }
 
 .flex-container{
-    display:  flex;
-    flex-flow: row nowrap;
     max-width: 125rem;
     max-height: 62.5rem;
     box-sizing: border-box;
@@ -454,6 +452,7 @@ p{
     flex-flow: row nowrap;
     overflow-x:clip;
     width: 4320px;
+    transform: translate3d(-1080px,0,0);
 }
 
 .item{
@@ -755,7 +754,7 @@ h2.pre{
     }
 
     .listnav{
-        display:none;
+        display: none;
         position: fixed;
         flex-direction: column;
         background-color: rgb(94, 204, 248);
@@ -765,17 +764,11 @@ h2.pre{
         top:50px;
         padding: 30px;
         text-align: center;
-        border-top: 1px solid rgb(95, 86, 86);
     }
 
     .col-md-8{
         flex: 0 0 66.667%;
         max-width: 66.667%;
-    }
-
-    .col-md-6{
-        max-width:100%;
-        flex: 0 0 100%;
     }
 
     .pricing-plan{
@@ -788,7 +781,7 @@ h2.pre{
     }
 
     .item{
-        width:327px;
+        width:340px;
     }
 }
 
@@ -796,13 +789,6 @@ h2.pre{
     .container{
         max-width:540px;
     }
-
-    .col-md-8,.col-md-7,.col-md-6{
-        max-width:100%;
-        flex: 0 0 100%;
-    }
-
-    
 
     #slide_show{
         width:5918px;
