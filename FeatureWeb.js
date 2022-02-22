@@ -219,13 +219,16 @@ function resizeDimensionResponsive() {
         tempLocationCarousel = newWidthItem * 3 - 3;
         carousel.style.transition = 'none';
         carousel.style.transform = 'translate3d(-' + tempLocationCarousel + 'px,0,0)';
-        emailTextArea.classList.toggle("pddleft-8");
-        emailTextArea.classList.toggle("pddright-8");
         let detailService = document.getElementsByClassName('hastooltiptext');
         detailService.item(0).style.left = "-15%";
         detailService.item(1).style.left = "-15%";
         detailService.item(2).style.left = "-60%";
         detailService.item(3).style.left = "-100%";
+        nameArea.classList.replace("col-md-6", "col-md-12");
+        planServiceArea.classList.replace("col-md-6", "col-md-12");
+        emailArea.classList.replace("col-md-6", "col-md-12");
+        emailArea.classList.replace("pddleft-8", "pddright-8");
+        detailArea.classList.add("pddright-8");
     }
     countForward = 4;
     countBackward = 2;

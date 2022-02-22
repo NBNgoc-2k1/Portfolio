@@ -790,6 +790,11 @@ h2.pre{
         max-width:540px;
     }
 
+    .col-md-8,.col-md-7,.col-md-6{
+        max-width:100%;
+        flex: 0 0 100%;
+    }
+
     #slide_show{
         width:5918px;
         transform: translate3d(-1452px,0,0);
