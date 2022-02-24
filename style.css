@@ -5,6 +5,10 @@
     scroll-behavior: smooth;
 }
 
+hmtl,body{
+    overflow-x: hidden;
+}
+
 ::selection{
     color:#fff;
 }
