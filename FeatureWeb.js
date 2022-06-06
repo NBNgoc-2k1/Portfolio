@@ -92,22 +92,22 @@ function changeNavColor() {
     if ((document.body.scrollTop > 0 && document.body.scrollTop < 425) ||
         (document.documentElement.scrollTop > 0 && document.documentElement.scrollTop < 425)) {
         for (var i = 0; i < navItem.length; i++)
-            navItem.item(i).className = "navtag";
+            navItem.item(i).className = "navtag uppercase_form";
     } else if ((document.body.scrollTop > 425 && document.body.scrollTop < 650) ||
         (document.documentElement.scrollTop > 425 && document.documentElement.scrollTop < 650)) {
         orderNum = 0;
-        navItem.item(orderNum).className = "navtag active";
+        navItem.item(orderNum).className = "navtag active uppercase_form";
     } else if ((document.body.scrollTop > 650 && document.body.scrollTop < 1000) ||
         (document.documentElement.scrollTop > 650 && document.documentElement.scrollTop < 1000)) {
         orderNum = 1;
-        navItem.item(orderNum).className = "navtag active";
+        navItem.item(orderNum).className = "navtag active uppercase_form";
     } else if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
         orderNum = 2;
-        navItem.item(orderNum).className = "navtag active";
+        navItem.item(orderNum).className = "navtag active uppercase_form";
     }
     for (var i = 0; i < navItem.length; i++) {
         if (i != orderNum)
-            navItem.item(i).className = "navtag";
+            navItem.item(i).className = "navtag uppercase_form";
     }
 
 }
@@ -207,7 +207,7 @@ function resizeDimensionResponsive() {
         }
         newWidthItem = mySlides.item(0).clientWidth;
         widthItem = newWidthItem;
-        tempLocationCarousel = newWidthItem * 3;
+        tempLocationCarousel = newWidthItem * 3 ;
         carousel.style.transition = 'none';
         carousel.style.transform = 'translate3d(-' + tempLocationCarousel + 'px,0,0)';
     } else {
@@ -224,6 +224,11 @@ function resizeDimensionResponsive() {
         detailService.item(1).style.left = "-15%";
         detailService.item(2).style.left = "-60%";
         detailService.item(3).style.left = "-100%";
+        nameArea.classList.replace("col-md-6", "col-md-12");
+        planServiceArea.classList.replace("col-md-6", "col-md-12");
+        emailArea.classList.replace("col-md-6", "col-md-12");
+        emailArea.classList.replace("pddleft-8", "pddright-8");
+        detailArea.classList.add("pddright-8");
     }
     countForward = 4;
     countBackward = 2;

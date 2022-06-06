@@ -63,7 +63,7 @@ hr{
 label{
     display: inline-block;
     margin-bottom: .5rem;
-    text-transform: uppercase;
+
     letter-spacing: .0625rem;
     color: #2b2a2a6c;
 }
@@ -81,7 +81,7 @@ p{
 .pre{
     color: #a9a9a9;
     font-size: 1rem;
-    text-transform: uppercase;
+
     letter-spacing: .125rem;
     margin-bottom: 4.375rem;
 }
@@ -198,8 +198,8 @@ p{
 }
 
 /* Single attr class */
-.upper_text{
-    text-transform:uppercase;
+.uppercase_form{
+    text-transform: uppercase !important;
 }
 
 .text-white{
@@ -310,7 +310,7 @@ p{
 }
 
 .logo{
-    background-image: url("ImgForWeb/mylogo.png");
+    background-image: url("ImgForWeb/logo.png");
     background-size: 2.1875rem;
     width: 2.1875rem;
     height: 2.1875rem;
@@ -341,7 +341,6 @@ p{
 
 .navtag{
     display: inline-block;
-    text-transform: uppercase;
     color:#fff;
     font-weight: 600;
     padding: 1.875rem 1.25rem;
@@ -350,7 +349,7 @@ p{
 }
 
 .navtag:hover{
-    color:rgb(224, 14, 14);
+    color:#fa5412;
 }
 
 .menu-icon,.close-icon{
@@ -382,7 +381,7 @@ p{
 }
 
 .active{
-    color:rgb(224, 14, 14); 
+    color:#fa5412; 
 }
 
 .introduce{  
@@ -456,7 +455,7 @@ p{
     flex-flow: row nowrap;
     overflow-x:clip;
     width: 4320px;
-    transform: translate3d(-1080px,0,0);
+    transform: translate3d(-720px,0,0);
 }
 
 .item{
@@ -473,7 +472,8 @@ p{
     color: rgb(8, 175, 241);
     width:100%;
     font-weight:500;
-    margin-bottom: 20px;
+    
+    margin: 20px 0;
 }
 
 #nextBtn:hover,#preBtn:hover{
@@ -690,7 +690,7 @@ h2.pre{
 
 .itemcontactlink{
     text-decoration: none;
-    color: black;
+    color: gray;
     font-weight: bold;
     border: 1px solid transparent;
     border-bottom: 2px;
