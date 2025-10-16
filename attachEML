@@ -1,40 +1,45 @@
+const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+        });
+        const fileInput = document.getElementById('fileInput');
+        document.getElementById('sendoutlook').addEventListener('click', function () {
             var emlContent = ''
+            const files = fileInput.files;
+            if (files.length > 0) {
+                let boundary = "----=_NextPart_" + Math.random().toString(36).substring(2, 15);
+                emlContent += "X-Unsent: 1\r\n";
+                emlContent += "MIME-Version: 1.0\r\n";
+                emlContent += `Content-Type: multipart/mixed; boundary="${boundary}"\r\n\r\n`;
+                emlContent += `--${boundary}\r\n`;
+                emlContent += "Content-Type: text/html; charset=UTF-8\r\n\r\n";
+                emlContent += document.getElementById('preview').innerHTML + "\r\n";
 
-            const preview = document.getElementById('preview');
-            const file = fileInput.files[0];
-            if (!file) return;
+                // Attach files
+                const processFiles = async () => {
+                    for (let i = 0; i < files.length; i++) {
+                        const file = files[i];
+                        const base64 = await toBase64(file);
+                        const base64Data = base64.split(',')[1];
+                        emlContent += `--${boundary}\r\n`;
+                        emlContent += `Content-Type: ${file.type || 'application/octet-stream'}; name="${file.name}"\r\n`;
+                        emlContent += "Content-Transfer-Encoding: base64\r\n";
+                        emlContent += `Content-Disposition: attachment; filename="${file.name}"\r\n\r\n`;
+                        emlContent += base64Data.replace(/(.{76})/g, "$1\r\n") + "\r\n";
+                    }
+                    emlContent += `--${boundary}--\r\n`;
 
-            const boundary = "----=_NextPart_" + Math.random().toString(36).substring(2, 15);
-
-            emlContent =
-                "To: recipient@example.com\r\n" +
-                "Subject: Quill Export\r\n" +
-                "X-Unsent: 1\r\n" +
-                "MIME-Version: 1.0\r\n" +
-                "Content-Type: multipart/mixed; boundary=\"" + boundary + "\"\r\n" +
-                "\r\n" +
-                "--" + boundary + "\r\n" +
-                "Content-Type: text/html; charset=UTF-8\r\n" +
-                "Content-Transfer-Encoding: 7bit\r\n" +
-                "\r\n" +
-                preview.innerHTML + "\r\n" +
-                "--" + boundary + "\r\n" +
-                
-                "Content-Type: " + (file.type || "application/octet-stream") + "; name=\"" + file.name + "\"\r\n" +
-                "Content-Transfer-Encoding: base64\r\n" +
-                "Content-Disposition: attachment; filename=\"" + file.name + "\"\r\n" +
-                "\r\n" + btoa(file) + "\r\n" +
-                "--" + boundary + "--\r\n";
-
-            // Continue with download logic
-            const filename = "exported_email.eml";
-            const blob = new Blob([emlContent], { type: "text/plain" });
-            const url = URL.createObjectURL(blob);
-
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+                    // Download the EML file
+                    const blob = new Blob([emlContent], { type: "message/rfc822" });
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(blob);
+                    a.download = "email.eml";
+                    a.click();
+                };
+                processFiles();
+            } else {
+                alert("Please select at least one file to attach.");
+            }
+        });
