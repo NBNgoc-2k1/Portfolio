@@ -1,0 +1,88 @@
+using Outlook_API.DB;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Http;
+
+namespace Outlook_API.Controllers
+{
+    [RoutePrefix("api/emails")]
+    public class EmailsController : ApiController
+    {
+        private MailDbContext db = new MailDbContext();
+        private readonly string _storageDir = @"C:\Web\EmailStorage\";
+        // GET api/values
+        [HttpGet]
+        [Route("download/{id}")]
+        public HttpResponseMessage DownloadEmail(int id)
+        {
+                var record = db.Emails.Find(id);
+                if (record == null) return Request.CreateResponse(HttpStatusCode.NotFound);
+
+                if (!File.Exists(record.FilePath))
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "File missing on server.");
+
+                var response = new HttpResponseMessage(HttpStatusCode.OK);
+                var fileStream = new FileStream(record.FilePath, FileMode.Open, FileAccess.Read);
+
+                // Set the content as the file stream
+                response.Content = new StreamContent(fileStream);
+
+                // Set headers so the browser/client knows it's a file
+                response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
+                {
+                    FileName = Path.GetFileName(record.FilePath)
+                };
+                response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
+
+                return response;
+        }
+        [HttpPost]
+        [Route("upload")]
+        public async Task<IHttpActionResult> Upload()
+        {
+            try
+            {
+
+                if (!Request.Content.IsMimeMultipartContent())
+                    return BadRequest("Unsupported media type");
+
+                var provider = new MultipartMemoryStreamProvider();
+                await Request.Content.ReadAsMultipartAsync(provider);
+
+                // Extract metadata from headers or custom form parts
+                string subject = HttpContext.Current.Request.Form["subject"];
+                string processUser = HttpContext.Current.Request.Form["processedByName"];
+
+                var file = provider.Contents.FirstOrDefault();
+                byte[] fileData = await file.ReadAsByteArrayAsync();
+
+                // 1. Save File to Disk
+                string fileName = Guid.NewGuid().ToString() + ".msg";
+                string fullPath = Path.Combine(_storageDir, fileName);
+                File.WriteAllBytes(fullPath, fileData);
+                // 2. Save to Database using EF 6
+                var record = new EmailRecord
+                {
+                    Subject = subject,
+                    FilePath = fullPath,
+                    Cfm_User = processUser,
+                    DateSaved = DateTime.Now
+                };
+                db.Emails.Add(record);
+                db.SaveChanges();
+
+                return Ok(new { id = record.Id });
+            } catch
+            {
+                return this.BadRequest("UPload fail");
+            }
+        }
+    }
+}
