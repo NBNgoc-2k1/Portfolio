@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <contextMenus>
+    <contextMenu idMso="ContextMenuMailItem">
+      <button id="btnSaveToSql"
+              label="Save to SQL Server"
+              onAction="OnSaveEmailClick"
+              imageMso="DatabaseMoveToSqlServer" />
+    </contextMenu>
+  </contextMenus>
+</customUI>
