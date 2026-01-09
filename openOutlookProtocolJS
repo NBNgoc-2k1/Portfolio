@@ -1,0 +1,4 @@
+    const filePath = "C:/Users/ngoc/Downloads/" + filename + ".msg"
+    const protocolUrl = "outlook-eml://" + btoa(filePath);
+
+window.location.href = protocolUrl
