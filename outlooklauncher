@@ -1,0 +1,50 @@
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
+using System.Web; // Enabled by the reference added in Step 3
+
+namespace OutlookLauncher
+{
+    static class Program
+    {
+        [STAThread]
+        static void Main(string[] args)
+        {
+            if (args.Length == 0) return;
+
+            try
+            {
+                // 1. Clean the Protocol
+                string rawUri = args[0];
+                string data = rawUri.Replace("outlook-eml://", "").TrimEnd('/');
+
+                // 2. Decode Base64 back to a real path
+                byte[] decodedBytes = Convert.FromBase64String(data);
+                string filePath = Encoding.UTF8.GetString(decodedBytes);
+
+                // 3. Optional: Decode URL encoding if necessary
+                filePath = HttpUtility.UrlDecode(filePath);
+
+                // 3. Safety Check
+                if (File.Exists(filePath))
+                {
+                    ProcessStartInfo startInfo = new ProcessStartInfo
+                    {
+                        FileName = "outlook.exe",
+                        Arguments = $"/eml \"{filePath}\"",
+                        UseShellExecute = true,
+                        WindowStyle = ProcessWindowStyle.Hidden
+                    };
+                    Process.Start(startInfo);
+                } else
+                {
+                     File.AppendAllText("C:\\Windows\\temp\\launcher_log.txt", "File not found: " + filePath);                }
+                }
+            catch
+            {
+                // Fail silently
+            }
+        }
+    }
+}
