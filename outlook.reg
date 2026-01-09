@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\outlook-eml]
+@="URL:Outlook EML Protocol"
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\outlook-eml\shell\open\command]
+@="\"C:\\Winprint\\OutlookLauncher\\OutlookLauncher.exe\" \"%1\""
